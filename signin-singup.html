@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin or Signup | Fyashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --accent-color: #ffde59;
+            --bg-color: #fff8f2;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --box-shadow: 0 8px 25px rgba(31, 41, 55, 0.1);
+            --input-bg: #f1f5f9;
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        *::selection {
+            background-color: #fc0000;
+            color: #efe6dd;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fdf6f0, #ffe9d6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            color: var(--text-color);
+            flex-direction: column;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--box-shadow);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 35px rgba(31, 41, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .message {
+            margin-top: 0.5rem;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            display: none;
+            text-align: left;
+        }
+
+        .message.error {
+            background: #ffe6e6;
+            color: #b00020;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.success {
+            background: #e6ffef;
+            color: #0b6623;
+            border: 1px solid #b7f5d0;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        p.subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input {
+            padding: 12px 15px;
+            border-radius: var(--radius);
+            border: 1px solid #ddd;
+            background-color: var(--input-bg);
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+        }
+
+        .password-match {
+            font-size: 0.85rem;
+            color: red;
+            text-align: left;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+
+        button {
+            background: linear-gradient(90deg, #ff6b35, #ff8c5a);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        button:hover {
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .toggle-text {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .toggle-text a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .toggle-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 450px) {
+            .card {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+        /* keep signup card hidden by default via CSS rather than inline styles */
+        #signupCard { display: none; }
+    </style>
+</head>
+
+<body>
+    <!-- Login Card -->
+    <div class="card" id="loginCard">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Sign in to access your account and enjoy a premium shopping experience.</p>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="message" id="loginMessage" role="status" aria-live="polite"></div>
+        <p class="toggle-text">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+    </div>
+
+    <!-- Signup Card -->
+    <div class="card" id="signupCard">
+        <h1>Create Account</h1>
+        <p class="subtitle">Register now to enjoy all site features and exclusive offers.</p>
+        <form id="signupForm">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" id="password" required>
+            <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+            <div class="password-match" id="passwordMatch">Passwords do not match!</div>
+            <button type="submit" id="signupButton">Sign Up</button>
+        </form>
+        <div class="message" id="signupMessage" role="status" aria-live="polite"></div>
+        <p class="toggle-text">Already have an account? <a href="#" id="showLogin">Sign In</a></p>
+    </div>
+
+    <script>
+        const loginCard = document.getElementById('loginCard');
+        const signupCard = document.getElementById('signupCard');
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const passwordMatch = document.getElementById('passwordMatch');
+        const signupButton = document.getElementById('signupButton');
+
+        showSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginCard.style.display = 'none';
+            signupCard.style.display = 'block';
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupCard.style.display = 'none';
+            loginCard.style.display = 'block';
+        });
+
+        // Real-time password match check
+        confirmPassword.addEventListener('input', () => {
+            if (password.value !== confirmPassword.value) {
+                passwordMatch.style.display = 'block';
+                signupButton.disabled = true;
+            } else {
+                passwordMatch.style.display = 'none';
+                signupButton.disabled = false;
+            }
+        });
+
+        // -- LocalStorage-backed auth helpers (client-side demo only) --
+        // Data shape stored under 'ti_users': [{ name, email, password }]
+
+        function getUsers() {
+            try {
+                const raw = localStorage.getItem('ti_users');
+                return raw ? JSON.parse(raw) : [];
+            } catch (e) {
+                console.error('Failed to parse users from localStorage', e);
+                return [];
+            }
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('ti_users', JSON.stringify(users));
+        }
+
+        // NOTE: This is NOT secure. For demo only. Replace with proper hashing on server.
+        function encodePassword(pwd) {
+            return btoa(pwd + '::trustidash');
+        }
+
+        function findUserByEmail(email) {
+            const users = getUsers();
+            return users.find(u => u.email.toLowerCase() === email.toLowerCase());
+        }
+
+        // Login submission: validate against localStorage users
+        const loginFormEl = document.getElementById('loginForm');
+        const loginMessageEl = document.getElementById('loginMessage');
+        function showMessage(el, msg, type = 'error', autoHide = true) {
+            if (!el) return;
+            el.textContent = msg;
+            el.className = 'message ' + (type === 'success' ? 'success' : 'error');
+            el.style.display = 'block';
+            if (autoHide) {
+                setTimeout(() => { el.style.display = 'none'; }, 5000);
+            }
+        }
+
+        if (loginFormEl) {
+            loginFormEl.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = loginFormEl.querySelector('input[type="email"]').value.trim();
+                const pwd = loginFormEl.querySelector('input[type="password"]').value.trim();
+                if (!email || !pwd) {
+                    showMessage(loginMessageEl, 'Please enter both email & password.', 'error');
+                    return;
+                }
+                const user = findUserByEmail(email);
+                if (!user) {
+                    showMessage(loginMessageEl, 'No account found. Please sign up first.', 'error');
+                    return;
+                }
+                if (user.password !== encodePassword(pwd)) {
+                    showMessage(loginMessageEl, 'Incorrect password.', 'error');
+                    return;
+                }
+                // Successful login: set a flag and redirect after a short success message
+                localStorage.setItem('ti_current_user', JSON.stringify({ email: user.email, name: user.name }));
+                showMessage(loginMessageEl, 'Login successful. Redirecting...', 'success', false);
+                setTimeout(() => { window.location.href = 'login_interface.html'; }, 900);
+            });
+        }
+
+        // Signup submission: store user in localStorage and redirect
+        const signupFormEl = document.getElementById('signupForm');
+        const signupMessageEl = document.getElementById('signupMessage');
+        if (signupFormEl) {
+            signupFormEl.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (password.value !== confirmPassword.value) {
+                    passwordMatch.style.display = 'block';
+                    showMessage(signupMessageEl, 'Passwords do not match.', 'error');
+                    return;
+                }
+                const name = signupFormEl.querySelector('input[type="text"]').value.trim();
+                const email = signupFormEl.querySelector('input[type="email"]').value.trim();
+                const pwd = password.value.trim();
+                if (!name || !email || !pwd) {
+                    showMessage(signupMessageEl, 'Please fill all fields.', 'error');
+                    return;
+                }
+                const existing = findUserByEmail(email);
+                if (existing) {
+                    showMessage(signupMessageEl, 'Account already exists. Please log in.', 'error');
+                    return;
+                }
+                const users = getUsers();
+                users.push({ name, email, password: encodePassword(pwd) });
+                saveUsers(users);
+                // Auto-login after signup
+                localStorage.setItem('ti_current_user', JSON.stringify({ email, name }));
+                showMessage(signupMessageEl, 'Signup successful - redirecting...', 'success', false);
+                setTimeout(() => { window.location.href = 'login_interface.html'; }, 900);
+            });
+        }
+
+        // Small helper: expose a method to clear demo data — useful while testing
+        // Usage (in console): clearDemoAuthData()
+        function clearDemoAuthData() {
+            localStorage.removeItem('ti_users');
+            localStorage.removeItem('ti_current_user');
+            console.log('Demo auth data cleared');
+        }
+
+        // End of localStorage-backed auth helpers
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Fyashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff6b35;
+      --accent-color: #ff6b35; /* changed to orange */
+      --text-color: #1f2937;
+      --bg-color: #fff8f2;
+      --card-bg: #fff;
+      --header-bg: linear-gradient(90deg, #ff6b35 0%, #ffde59 100%);
+      --header-text: #fff;
+      --footer-bg: #f7f3ee;
+      --footer-text: #1f2937;
+      --border-color: #efe6dd;
+      --box-shadow: 0 10px 25px rgba(31, 41, 55, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: -2rem auto 2rem;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1.5rem;
+        margin: -1.5rem 1rem 2rem;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <main>
+    <h2>We’d Love to Hear From You</h2>
+    <p>Have questions or need support? Reach out to us through any of the channels below:</p>
+    <p>Email: <a href="mailto:mmvyash.143@gmail.com">mmvyash.143@gmail.com</a></p>
+    <p>Phone: <a href="tel:+917989552340">+91 79895 52340</a></p>
+    <p>Address: Wahab Road, Tenali - 522201</p>
+    <p>Dev Website: <a href="https://royz-portfolio.netlify.app" target="_blank">royz-portfolio</a></p>
+  </main>
+
+  <footer>
+    &copy; 2025 Fyashion. All rights reserved.
+  </footer>
+</body>
+
+</html>

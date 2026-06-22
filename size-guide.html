@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Size Guide | Fyashion</title>
+  <style>
+    :root {
+      --primary-color: #ff6b35;
+      --accent-color: #ffde59;
+      --text-color: #1f2937;
+      --bg-color: #fff8f2;
+      --card-bg: #ffffff;
+      --header-bg: linear-gradient(90deg, #ff6b35 0%, #ffde59 100%);
+      --header-text: #fff;
+      --footer-bg: #f7f3ee;
+      --footer-text: #1f2937;
+      --border-color: #efe6dd;
+      --box-shadow: 0 10px 25px rgba(31, 41, 55, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: -2rem auto 2rem;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fff4e6;
+    }
+
+    caption {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      table, th, td {
+        font-size: 0.85rem;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Size Guide</h1>
+  </header>
+
+  <main>
+    <h2>Choose the Right Size</h2>
+
+    <!-- Men's Sizes -->
+    <table>
+      <caption>Men's Sizes</caption>
+      <tr>
+        <th>Size</th>
+        <th>Chest (in/cm)</th>
+        <th>Waist (in/cm)</th>
+        <th>Hips (in/cm)</th>
+      </tr>
+      <tr><td>S</td><td>36–38 / 91–97</td><td>30–32 / 76–81</td><td>36–38 / 91–97</td></tr>
+      <tr><td>M</td><td>39–41 / 99–104</td><td>33–35 / 84–89</td><td>39–41 / 99–104</td></tr>
+      <tr><td>L</td><td>42–44 / 107–112</td><td>36–38 / 91–97</td><td>42–44 / 107–112</td></tr>
+      <tr><td>XL</td><td>45–47 / 114–119</td><td>39–41 / 99–104</td><td>45–47 / 114–119</td></tr>
+      <tr><td>XXL</td><td>48–50 / 122–127</td><td>42–44 / 107–112</td><td>48–50 / 122–127</td></tr>
+    </table>
+
+    <!-- Women's Sizes -->
+    <table>
+      <caption>Women's Sizes</caption>
+      <tr>
+        <th>Size</th>
+        <th>Bust (in/cm)</th>
+        <th>Waist (in/cm)</th>
+        <th>Hips (in/cm)</th>
+      </tr>
+      <tr><td>XS</td><td>31–32 / 79–81</td><td>24–25 / 61–64</td><td>33–34 / 84–86</td></tr>
+      <tr><td>S</td><td>33–34 / 84–86</td><td>26–27 / 66–69</td><td>35–36 / 89–91</td></tr>
+      <tr><td>M</td><td>35–36 / 89–91</td><td>28–29 / 71–74</td><td>37–38 / 94–97</td></tr>
+      <tr><td>L</td><td>37–39 / 94–99</td><td>30–32 / 76–81</td><td>39–41 / 99–104</td></tr>
+      <tr><td>XL</td><td>40–42 / 102–107</td><td>33–35 / 84–89</td><td>42–44 / 107–112</td></tr>
+    </table>
+
+    <!-- Kids' Sizes -->
+    <table>
+      <caption>Kids' Sizes</caption>
+      <tr>
+        <th>Age</th>
+        <th>Height (cm/in)</th>
+        <th>Chest (cm/in)</th>
+        <th>Waist (cm/in)</th>
+      </tr>
+      <tr><td>2–3 yrs</td><td>92–98 / 36–38</td><td>53–55 / 21–22</td><td>51–53 / 20–21</td></tr>
+      <tr><td>4–5 yrs</td><td>104–110 / 41–43</td><td>57–59 / 22–23</td><td>55–57 / 22–23</td></tr>
+      <tr><td>6–7 yrs</td><td>116–122 / 46–48</td><td>61–63 / 24–25</td><td>59–61 / 23–24</td></tr>
+      <tr><td>8–9 yrs</td><td>128–134 / 50–53</td><td>65–67 / 26–27</td><td>63–65 / 25–26</td></tr>
+      <tr><td>10–11 yrs</td><td>140–146 / 55–57</td><td>69–71 / 27–28</td><td>67–69 / 26–27</td></tr>
+    </table>
+  </main>
+
+  <footer>
+    &copy; 2025 Fyashion. All rights reserved.
+  </footer>
+</body>
+
+</html>

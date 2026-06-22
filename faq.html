@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs | Fyashion</title>
+  <style>
+    :root {
+      --primary-color: #ff6b35;
+      --accent-color: #ffde59;
+      --text-color: #1f2937;
+      --bg-color: #fff8f2;
+      --card-bg: #ffffff;
+      --header-bg: linear-gradient(90deg, #ff6b35 0%, #ffde59 100%);
+      --header-text: #fff;
+      --footer-bg: #f7f3ee;
+      --footer-text: #1f2937;
+      --border-color: #efe6dd;
+      --box-shadow: 0 10px 25px rgba(31, 41, 55, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: var(--transition);
+      line-height: 1.6;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: -2rem auto 2rem;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 1rem;
+      background: #fff4e6;
+      padding: 1.2rem 1rem;
+      border-left: 5px solid var(--primary-color);
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    ul li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 6px 15px rgba(31, 41, 55, 0.1);
+    }
+
+    strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1.5rem;
+        margin: -1.5rem 1rem 2rem;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>FAQs</h1>
+  </header>
+
+  <main>
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+      <li>
+        <strong>How do I track my order?</strong>
+        Use the order tracking link sent to your email.
+      </li>
+      <li>
+        <strong>What payment methods are supported?</strong>
+        We accept UPI, PayPal, GPay, PhonePe, Paytm, Razorpay.
+      </li>
+      <li>
+        <strong>Can I cancel an order?</strong>
+        Yes, within 24 hours of placing the order.
+      </li>
+      <li>
+        <strong>How do I return an item?</strong>
+        Visit our Returns & Refunds page for instructions.
+      </li>
+      <li>
+        <strong>Who do I contact for support?</strong>
+        Reach out to our support team via email or chat for any help.
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    &copy; 2025 Fyashion. All rights reserved.
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Returns & Refunds | Fyashion</title>
+  <style>
+    :root {
+      --primary-color: #ff6b35;
+      --accent-color: #ffde59;
+      --text-color: #1f2937;
+      --bg-color: #fff8f2;
+      --card-bg: #ffffff;
+      --header-bg: linear-gradient(90deg, #ff6b35 0%, #ffde59 100%);
+      --header-text: #fff;
+      --footer-bg: #f7f3ee;
+      --footer-text: #1f2937;
+      --border-color: #efe6dd;
+      --box-shadow: 0 10px 25px rgba(31, 41, 55, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: -2rem auto 2rem;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    main p strong {
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1.5rem;
+        margin: -1.5rem 1rem 2rem;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Returns & Refunds</h1>
+  </header>
+
+  <main>
+    <p>You may return items within <strong>10 days</strong> of delivery if the product is unused and in its original condition.</p>
+    <p>Refunds are processed to your original payment method within <strong>7 working days</strong> after product inspection.</p>
+    <p>Shipping charges are non-refundable. For damaged or incorrect items, please contact our support team immediately.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Fyashion. All rights reserved.
+  </footer>
+</body>
+
+</html>

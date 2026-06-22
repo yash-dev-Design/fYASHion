@@ -1,0 +1,3820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fyashion | Online e-commerce Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cedarville+Cursive&family=Cinzel:wght@400..900&family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet">
+    <!-- Font Awesome for icons (v6) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            /* New warm color palette */
+            --primary-color: #ff6b35;
+            /* warm orange */
+            --accent-color: #fc0000;
+            /* soft yellow */
+            --text-color: #1f2937;
+            /* dark slate */
+            --bg-color: #fff8f2;
+            /* very light cream */
+            --card-bg: #ffffff;
+            /* cards stay white */
+            --header-bg: #ffffff;
+            /* header keeps light background */
+            --header-text: #1f2937;
+            /* header text uses main text color */
+            --footer-bg: #f7f3ee;
+            /* subtle footer tone */
+            --footer-text: #1f2937;
+            --border-color: #efe6dd;
+            /* soft border */
+            --box-shadow: 0 4px 12px rgba(31, 41, 55, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header Styles */
+        header {
+            backdrop-filter: blur(2px);
+            background-color: #f7f3ee;
+            color: var(--header-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-height: 90px;
+            border-bottom: 1px solid black;
+        }
+
+        .logo h1 {
+            font-size: 2em;
+            font-family: 'Georgia', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .logo {
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.04);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            background: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--header-text);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Navigation */
+        .navi {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--header-text);
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav ul li::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav ul li:hover {
+            transform: translateY(-3px);
+        }
+
+        nav ul li:hover::after {
+            width: 100%;
+        }
+
+        nav ul li:hover a {
+            color: var(--accent-color);
+        }
+
+        /* Desktop Actions */
+        .desktop-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .desktop-actions span {
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px 2px;
+            border-radius: 5px;
+        }
+
+        .desktop-actions span a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .desktop-actions span a::after {
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: -10px;
+            width: 0%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .desktop-actions span a:hover::after {
+            width: 100%;
+        }
+
+        /* theme toggle removed */
+
+        /* Mobile Actions */
+        .mobile-actions {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        .mobile-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-action-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-action-btn a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Banner */
+        .banner {
+            margin: 30px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .slider-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Dots / pagination for banner slider */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            align-items: center;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(31, 41, 55, 0.15);
+            border: 2px solid rgba(31, 41, 55, 0.08);
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .slider-dot:focus {
+            outline: 2px solid var(--accent-color);
+            transform: scale(1.15);
+        }
+
+        .slider-dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.25);
+        }
+
+        .slider-item {
+            position: relative;
+            min-width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            scroll-snap-align: start;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 32px;
+            margin: 40px 0 20px;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Search and Filter */
+        .grp1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .grp1 h1 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        #search-filter {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-family: 'Lato', sans-serif;
+            transition: var(--transition);
+        }
+
+        #search-filter:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Product Box */
+        .box {
+            background-color: var(--card-bg);
+            box-shadow: var(--box-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dis {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        .fav {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            transition: var(--transition);
+            z-index: 10;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fav.active {
+            color: var(--primary-color);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .box:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .product-desc {
+            font-size: 15px;
+            color: #4b5563;
+            margin-bottom: 8px;
+            min-height: 34px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: #f59e0b;
+            /* amber stars */
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .rating-value {
+            font-size: 17px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .box h2 {
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .price {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .new-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .Add-To-Cart {
+            border: none;
+            color: #fff;
+            background-color: var(--primary-color);
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .Add-To-Cart:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .Add-To-Cart a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 30px 20px;
+            margin-top: 60px;
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            border-top: 1px solid #6b7280;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        footer h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        footer p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: var(--footer-text);
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        footer input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--footer-text);
+        }
+
+        footer input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        footer button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        footer button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer social icons */
+        .footer-socials {
+            margin-top: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-socials a {
+            display: inline-grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: var(--header-text);
+            text-decoration: none;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            transform: translateY(-4px);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+
+            header {
+                padding: 15px 3%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .desktop-actions {
+                display: none;
+            }
+
+            .navi {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--header-bg);
+                transition: var(--transition);
+                z-index: 1000;
+                flex-direction: column;
+                align-items: stretch;
+                overflow-y: auto;
+            }
+
+            .navi.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0 20px;
+                gap: 0;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul li a {
+                padding: 20px;
+                display: block;
+                width: 100%;
+            }
+
+            nav ul li::after {
+                display: none;
+            }
+
+            .mobile-actions {
+                display: flex;
+            }
+
+            .grp1 {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            #search-filter {
+                max-width: none;
+            }
+
+            .slider-item {
+                height: 250px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 15px 15px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .banner {
+                padding: 0 15px;
+            }
+
+            .slider-item {
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin: 30px 0 15px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+                margin: 30px 0;
+            }
+
+            .box h2 {
+                font-size: 16px;
+            }
+
+            .image-container {
+                height: 150px;
+            }
+
+            .product-info {
+                padding: 10px;
+            }
+
+            .price {
+                margin: 10px 0;
+                gap: 10px;
+            }
+
+            .new-price {
+                font-size: 16px;
+            }
+
+            .old-price {
+                font-size: 12px;
+            }
+
+            .Add-To-Cart {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .dis {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+
+            .fav {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-container {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .products-grid {
+                /* Single product per row on very small screens (phones) */
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .box h2 {
+                font-size: 14px;
+            }
+
+            .image-container {
+                height: 120px;
+            }
+        }
+
+        /* Filters UI styles */
+        .filters-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 12px;
+            align-items: center;
+        }
+
+        .filter-search {
+            flex: 1;
+            max-width: 360px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-select,
+        .filter-price {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-select {
+            width: 120px;
+        }
+
+        .filter-price {
+            width: 100px;
+        }
+
+        .filter-clear {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            background: var(--primary-color);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Make Add-To-Cart anchors look like buttons */
+        .Add-To-Cart {
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+            background: var(--primary-color);
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Helper classes to replace inline styles */
+        .price-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .footer-input-border {
+            border: 1px solid #1f2937;
+        }
+
+        .desktop-btn {
+            font-weight: bold;
+        }
+
+        .desktop-btn:hover {
+            color: #fc0000;
+            transform: translateY(-5px);
+        }
+
+        /* About Us Section (Bento grid, equal cards) */
+        .about-section {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 247, 240, 0.9));
+            padding: 44px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        /* Each card should stretch to fill its grid cell so all are equal height */
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .about-card .icon {
+            color: var(--accent-color);
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, rgba(252, 0, 0, 0.06), rgba(255, 107, 53, 0.04));
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        .about-card strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .about-card .muted {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: var(--card-bg);
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .stat .num {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Sidebar (cart & wishlist) */
+        .sidebar-toggle-btns {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .sidebar-toggle-btns .desktop-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .badge-count {
+            background: var(--accent-color);
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 999px;
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 380px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: -12px 0 24px rgba(0, 0, 0, 0.12);
+            transition: right 0.28s ease;
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .sidebar-panel.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 18px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-items {
+            padding: 12px;
+            overflow-y: auto;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+        }
+
+        .sidebar-item img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .sidebar-item .meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item .meta .title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-item .meta .price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .sidebar-footer {
+            padding: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-top {
+            margin-top: 10px;
+        }
+
+        .small-btn {
+            padding: 6px 8px;
+            border-radius: 6px;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .detail {
+            position: relative;
+        }
+
+        .detail:hover {
+            color: #fc0000;
+        }
+
+        .detail::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background-color: #fc0000;
+            color: #fc0000;
+            transition: all ease-in-out 0.4s;
+        }
+
+        .detail:hover::after {
+            width: 100%;
+        }
+
+        /* make sidebar responsive */
+        @media (max-width: 700px) {
+            .sidebar-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .sidebar-panel.open {
+                right: 0;
+            }
+
+            .sidebar-item img {
+                width: 56px;
+                height: 56px;
+            }
+
+            .badge-count {
+                top: -8px;
+                right: -6px;
+                min-width: 18px;
+                font-size: 11px;
+                padding: 2px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="logo">
+            <h1>F<span>yash</span>ion</h1>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <div class="navi" id="mobile-nav">
+            <nav>
+                <ul>
+                    <li><a href="#banner">HOME</a></li>
+                    <li><a href="#rec">PRODUCTS</a></li>
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#footer">CONTACT US</a></li>
+                    <li><a style="color: #ff6b35;" href="#">WISHLIST<i class="fa fa-heart" aria-hidden="true"></i> (0)
+                    </li></a></li>
+                    <li><a style="color: #ff6b35;" href="#">CART<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            (0)</li></a></li>
+                    <li><a style="color: #ff6b35;" href="#">PROFILE <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </li></a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <!-- Banner -->
+    <section class="banner" id="banner">
+        <div class="slider-container" id="bannerSlider">
+            <div class="slider-item">
+                <img src="https://static.vecteezy.com/system/resources/previews/007/808/295/non_2x/mega-sale-banner-template-design-for-web-or-social-media-vector.jpg"
+                    alt="Mega Sale" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="/images/black_friday.jpg" alt="Black Friday Sale" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://static.vecteezy.com/system/resources/previews/023/315/011/non_2x/dussehra-sale-banner-or-header-design-with-discount-offer-on-yellow-and-purple-background-vector.jpg"
+                    alt="dusshera Sale" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGCnKbh1Ox_9lBWRYwzsMmDLXRLn4a-LCnmQ&s"
+                    alt="weekend Sale" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="/images/monday sale.png" alt="monday Sale" class="banner-img">
+            </div>
+
+            <!-- new banners -->
+            <div class="slider-item">
+                <img src="https://img.freepik.com/free-vector/raksha-bandhan-sale-banner-with-golden-rakhi_1017-32977.jpg?ga=GA1.1.815790019.1736987077&semt=ais_items_boosted&w=740"
+                    alt="Fashion Sale" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://img.freepik.com/free-vector/decorative-happy-diwali-sale-banner_1017-21469.jpg?ga=GA1.1.815790019.1736987077&semt=ais_items_boosted&w=740"
+                    alt="Electronics" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://img.freepik.com/premium-psd/summer-banner-promotion-social-media-facebook-cover-banner-template_368797-1134.jpg?ga=GA1.1.815790019.1736987077&semt=ais_items_boosted&w=740"
+                    alt="Sports" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://img.freepik.com/free-vector/realistic-sale-social-media-cover-template-summer-season-celebration_23-2150344451.jpg?ga=GA1.1.815790019.1736987077&semt=ais_items_boosted&w=740"
+                    alt="Sports" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://img.freepik.com/free-vector/realistic-ramadan-social-media-promo-template_23-2149316086.jpg?ga=GA1.1.815790019.1736987077&semt=ais_hybrid&w=740"
+                    alt="Sports" class="banner-img">
+            </div>
+            <div class="slider-item">
+                <img src="https://img.freepik.com/free-vector/christmas-sale-best-offer-lettering_1262-7515.jpg?ga=GA1.1.1819508097.1735268079&semt=ais_items_boosted&w=740"
+                    alt="Sports" class="banner-img">
+            </div>
+        </div>
+        <!-- Pagination dots for banner slider -->
+        <div class="slider-dots" id="bannerDots" aria-label="Banner navigation" role="tablist"></div>
+    </section>
+
+    <!-- Recommended Products -->
+    <section id="rec">
+        <h2 class="section-title">RECOMMENDED PRODUCTS</h2>
+        <div class="container">
+            <div class="products-grid">
+
+                <div class="box">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/29/06/79/290679d212d4e5851066a05f7fb04a4b.jpg"
+                            alt="Croma Induction Cooktop">
+                    </div>
+                    <div class="product-info">
+                        <h2>Croma 1600W Induction Cooktop</h2>
+                        <p class="product-desc">5 preset modes, portable & energy efficient.</p>
+                        <div class="rating" aria-label="4.1 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.1</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,499.00</p>
+                            <p class="new-price">₹1,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">21% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1695499405433-63b7d42e7326?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhbG1lfGVufDB8fDB8fA%3D%3D"
+                            alt="Smartphone">
+                    </div>
+                    <div class="product-info">
+                        <h2>Realme Narzo 70 Pro</h2>
+                        <p class="product-desc">Feature-packed smartphone with fast charging and vivid display.</p>
+                        <div class="rating" aria-label="4.1 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.1</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹25,000.00</p>
+                            <p class="new-price">₹18,000.60</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c21hcnQlMjB3YXRjaHxlbnwwfHwwfHx8MA%3D%3D"
+                            alt="Smartwatch">
+                    </div>
+                    <div class="product-info">
+                        <h2>Samsung Smart watch</h2>
+                        <p class="product-desc">Stylish smartwatch with fitness tracking and long battery life.</p>
+                        <div class="rating" aria-label="4.2 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹40,000.00</p>
+                            <p class="new-price">₹35,345.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">17% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1632073383420-01461da1e082?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8amJsfGVufDB8fDB8fHww"
+                            alt="Bluetooth Speaker">
+                    </div>
+                    <div class="product-info">
+                        <h2>JBL Bluetooth Speaker</h2>
+                        <p class="product-desc">Portable speaker with rich bass and water-resistant design.</p>
+                        <div class="rating" aria-label="4.3 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,000.00</p>
+                            <p class="new-price">₹1,899.75</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1628832307345-7404b47f1751?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FtaW5nJTIwbW91c2V8ZW58MHx8MHx8fDA%3D"
+                            alt="Gaming Mouse">
+                    </div>
+                    <div class="product-info">
+                        <h2>Zebronics Gaming Mouse</h2>
+                        <p class="product-desc">Ergonomic mouse with programmable buttons and precise sensor.</p>
+                        <div class="rating" aria-label="4.2 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹800.00</p>
+                            <p class="new-price">₹700.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">18% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/3d/68/3d/3d683d86b6191f06ab9265bcf7511ed0.jpg"
+                            alt="Men's Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h2>Men’s Leather Jacket</h2>
+                        <p class="product-desc">Premium black leather jacket with modern fit and soft lining.</p>
+                        <div class="rating" aria-label="4.6 out of 5 stars">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹4,999.00</p>
+                            <p class="new-price">₹4,099.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">12% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/59/7e/3d/597e3de43781a839ae2084ecb432c70c.jpg"
+                            alt="Sunglasses">
+                    </div>
+                    <div class="product-info">
+                        <h2>Ray-Ban Sunglasses</h2>
+                        <p class="product-desc">Classic aviator sunglasses with UV protection and metal frame.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹5,000.00</p>
+                            <p class="new-price">₹4,399.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">5% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cm9uaWNzfGVufDB8fDB8fHww"
+                            alt="Apple">
+                    </div>
+                    <div class="product-info">
+                        <h2>MAC M2</h2>
+                        <p class="product-desc">Powerful laptop with M2 chip for creative workflows and speed.</p>
+                        <div class="rating" aria-label="4.7 out of 5 stars">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹77,920.00</p>
+                            <p class="new-price">₹72,890.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">38% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/4e/ca/5b/4eca5bbf189cd3a371d896e57a82ecb6.jpg"
+                            alt="Philips HD9252/90 Air Fryer">
+                    </div>
+                    <div class="product-info">
+                        <h2>Philips HD9252/90 Air Fryer</h2>
+                        <p class="product-desc">4.1L, 7 presets, RapidAir tech for healthy frying.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹11,995.00</p>
+                            <p class="new-price">₹7,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1626155399627-86488538895d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FtaW5nJTIwa2V5Ym9hcmR8ZW58MHx8MHx8fDA%3D"
+                            alt="Gaming Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <h2>Zebronics Gaming Keyboard</h2>
+                        <p class="product-desc">Mechanical keyboard with RGB lighting and tactile switches.</p>
+                        <div class="rating" aria-label="4.3 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,250.00</p>
+                            <p class="new-price">₹950.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">19% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/ca/22/e5/ca22e595e562446168583a9fd6d25420.jpg"
+                            alt="Microwave Oven">
+                    </div>
+                    <div class="product-info">
+                        <h2>IFB Microwave Oven</h2>
+                        <p class="product-desc">Convection microwave with auto-cook menus and sleek touch controls.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹12,999.00</p>
+                            <p class="new-price">₹10,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">14% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/17/62/79/17627958dcfe16334a8682c3e53ea927.jpg"
+                            alt="Air Conditioner">
+                    </div>
+                    <div class="product-info">
+                        <h2>Voltas 1.5 Ton AC</h2>
+                        <p class="product-desc">Energy-efficient split AC with turbo cooling and low power consumption.
+                        </p>
+                        <div class="rating" aria-label="4.3 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹39,999.00</p>
+                            <p class="new-price">₹34,500.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1536353284924-9220c464e262?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZnJpZGdlfGVufDB8MHwwfHx8MA%3D%3D"
+                            alt="Gaming Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <h2>LG Fridge</h2>
+                        <p class="product-desc">Energy-efficient fridge with spacious compartments and smart cooling.
+                        </p>
+                        <div class="rating" aria-label="4.4 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹27,000.00</p>
+                            <p class="new-price">₹24,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">5% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/c9/9e/e6/c99ee6c54499f69dc2194de9cf93022e.jpg"
+                            alt="Nothing Phone 3a 5G">
+                    </div>
+                    <div class="product-info">
+                        <h2>Nothing Phone 3a 5G</h2>
+                        <p class="product-desc">Minimal design phone, 5G support, mid-range.</p>
+                        <div class="rating" aria-label="4.2 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹23,000.00</p>
+                            <p class="new-price">₹21,984.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/da/07/e5/da07e53f52c76f2bf40dafdf1b6818a2.jpg"
+                            alt="Women's Dress">
+                    </div>
+                    <div class="product-info">
+                        <h2>Floral Summer Dress</h2>
+                        <p class="product-desc">Lightweight floral printed dress perfect for casual outings.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,899.00</p>
+                            <p class="new-price">₹1,425.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">11% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://plus.unsplash.com/premium_photo-1667538960183-82690c60a2a5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2Fub258ZW58MHx8MHx8fDA%3D"
+                            alt="DSLR Camera">
+                    </div>
+                    <div class="product-info">
+                        <h2>Canon DSLR Camera</h2>
+                        <p class="product-desc">High-resolution DSLR for stunning photos and versatile lenses.</p>
+                        <div class="rating" aria-label="4.4 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹35,450.00</p>
+                            <p class="new-price">₹30,489.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">0% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/3f/cb/9a/3fcb9af9b29070807837f04ed91e8e2f.jpg"
+                            alt="Henrietta 3-Seater Fabric Sofa">
+                    </div>
+                    <div class="product-info">
+                        <h2>Henrietta 3-Seater Sofa</h2>
+                        <p class="product-desc">Fabric upholstery, comfortable cushion seats, modern design.</p>
+                        <div class="rating" aria-label="4.4 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹34,999.00</p>
+                            <p class="new-price">₹34,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">28% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/93/e9/51/93e951250b9a0c03ec30fa1648bbd07c.jpg"
+                            alt="Perfume Bottle">
+                    </div>
+                    <div class="product-info">
+                        <h2>Aetheris Eau De Parfum</h2>
+                        <p class="product-desc">Long-lasting unisex fragrance with citrus, amber, and musk notes.</p>
+                        <div class="rating" aria-label="4.7 out of 5 stars">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,499.00</p>
+                            <p class="new-price">₹1,799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">31% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2FzaGluZyUyMG1hY2hpbmV8ZW58MHwwfDB8fHww"
+                            alt="Gaming Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <h2>Panasonic Washing Machine</h2>
+                        <p class="product-desc">Reliable washing machine with multiple wash programs and low noise.</p>
+                        <div class="rating" aria-label="4.2 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹41,400.00</p>
+                            <p class="new-price">₹28,490.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">17% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1714071803623-9594e3b77862?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QW5kcm9pZCUyMFRhYmxldHxlbnwwfHwwfHx8MA%3D%3D"
+                            alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <h2>Lenovo Tab M7</h2>
+                        <p class="product-desc">Compact tablet for media and browsing with crisp display.</p>
+                        <div class="rating" aria-label="4.0 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.0</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹33,000.00</p>
+                            <p class="new-price">₹30,000.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">22% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/a6/f5/e9/a6f5e9aabebdedec1f4e397a5dd20c84.jpg"
+                            alt="Sneakers">
+                    </div>
+                    <div class="product-info">
+                        <h2>Nike Air Sneakers</h2>
+                        <p class="product-desc">Lightweight and stylish sneakers for daily comfort and sports use.</p>
+                        <div class="rating" aria-label="4.8 out of 5 stars">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹5,499.00</p>
+                            <p class="new-price">₹4,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">50% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/17/96/96/1796966fd5bd54292f97c6dea9dd107f.jpg"
+                            alt="IKEA POÄNG Armchair">
+                    </div>
+                    <div class="product-info">
+                        <h2>IKEA POÄNG Armchair</h2>
+                        <p class="product-desc">Scandinavian style lounge chair with bentwood frame.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹17,980.00</p>
+                            <p class="new-price">₹8,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/96/f9/a6/96f9a68f8a19490fffa6787db5f42a01.jpg"
+                            alt="Samsung Galaxy S23 Ultra">
+                    </div>
+                    <div class="product-info">
+                        <h2>Samsung Galaxy S23 Ultra</h2>
+                        <p class="product-desc">Flagship 200 MP camera, top-tier display & performance.</p>
+                        <div class="rating" aria-label="4.8 out of 5 stars">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹84,999.00</p>
+                            <p class="new-price">₹74,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <p class="dis">9% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1640955014216-75201056c829?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FtaW5nJTIwbGFwdG9wfGVufDB8fDB8fHww"
+                            alt="Gaming Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h2>ASUS TUF Gaming Laptop</h2>
+                        <p class="product-desc">Durable gaming laptop with high-refresh display and powerful GPU.</p>
+                        <div class="rating" aria-label="4.6 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹70,000.00</p>
+                            <p class="new-price">₹67,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const slider = document.getElementById('bannerSlider');
+            const dotsContainer = document.getElementById('bannerDots');
+            if (!slider || !dotsContainer) return;
+
+            const items = Array.from(slider.querySelectorAll('.slider-item'));
+
+            // Create dots matching number of items
+            items.forEach((it, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'slider-dot';
+                btn.type = 'button';
+                btn.setAttribute('aria-label', `Show banner ${index + 1}`);
+                btn.setAttribute('role', 'tab');
+                btn.dataset.index = index;
+                btn.addEventListener('click', () => {
+                    // Scroll the slider to the start of the target item
+                    items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    updateActive(index);
+                });
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+                dotsContainer.appendChild(btn);
+            });
+
+            const dots = Array.from(dotsContainer.children);
+
+            function updateActive(activeIndex) {
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === activeIndex);
+                    d.setAttribute('aria-selected', String(i === activeIndex));
+                    d.tabIndex = i === activeIndex ? 0 : -1;
+                });
+            }
+
+            // Set initial active dot
+            updateActive(0);
+
+            // Sync dots while user scrolls the slider
+            let scrollTimer = null;
+            slider.addEventListener('scroll', () => {
+                if (scrollTimer) clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    // Find the item closest to the left edge of the slider viewport
+                    const sliderRect = slider.getBoundingClientRect();
+                    let closestIndex = 0;
+                    let closestDistance = Infinity;
+                    items.forEach((it, idx) => {
+                        const rect = it.getBoundingClientRect();
+                        const distance = Math.abs(rect.left - sliderRect.left);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestIndex = idx;
+                        }
+                    });
+                    updateActive(closestIndex);
+                }, 80);
+            }, { passive: true });
+
+            // Optional: allow left/right arrow navigation when focus is on dots
+            dotsContainer.addEventListener('keydown', (e) => {
+                const activeIndex = dots.findIndex(d => d.classList.contains('active'));
+                if (e.key === 'ArrowRight') {
+                    const next = Math.min(dots.length - 1, activeIndex + 1);
+                    dots[next].focus();
+                    dots[next].click();
+                } else if (e.key === 'ArrowLeft') {
+                    const prev = Math.max(0, activeIndex - 1);
+                    dots[prev].focus();
+                    dots[prev].click();
+                }
+            });
+        })();
+    </script>
+
+    <!-- All Products -->
+    <section class="all-products">
+        <div class="container">
+            <div class="grp1">
+                <h1>All Products</h1>
+                <hr>
+                <!-- Filters: search, category, price -->
+                <div class="filters-row">
+                    <input id="searchAll" class="filter-search" type="search" placeholder="Search products..."
+                        aria-label="Search products">
+                    <select id="categoryFilter" class="filter-select" aria-label="Filter by category">
+                        <option value="all">All categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="home">Home Appliances</option>
+                        <option value="beauty">Beauty & Personal Care</option>
+                        <option value="toys">Toys & Games</option>
+                        <option value="sports">Sports & Fitness</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="books">Books & Stationery</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="health">Health & Wellness</option>
+                        <option value="pets">Pet Supplies</option>
+                        <option value="jewelry">Jewelry & Accessories</option>
+                    </select>
+                    <div class="price-group">
+                        <input id="minPrice" class="filter-price" type="number" placeholder="Min ₹"
+                            aria-label="Minimum price">
+                        <input id="maxPrice" class="filter-price" type="number" placeholder="Max ₹"
+                            aria-label="Maximum price">
+                    </div>
+                    <button id="clearFilters" class="filter-clear">Clear</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="all-products-grid">
+                <!-- Product 1 -->
+                <div class="box" data-name="Samsung Smart watch" data-category="electronics" data-price="35345">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=60"
+                            alt="Samsung Smart watch">
+                    </div>
+                    <div class="product-info">
+                        <h2>Samsung Smart watch</h2>
+                        <p class="product-desc">Stylish smartwatch with fitness tracking and long battery life.</p>
+                        <div class="rating" aria-label="4.2 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹40,000.00</p>
+                            <p class="new-price">₹35,345.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="box" data-name="Floral Summer Dress" data-category="fashion" data-price="1425">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/da/07/e5/da07e53f52c76f2bf40dafdf1b6818a2.jpg"
+                            alt="Floral Summer Dress">
+                    </div>
+                    <div class="product-info">
+                        <h2>Floral Summer Dress</h2>
+                        <p class="product-desc">Lightweight floral printed dress perfect for casual outings.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,899.00</p>
+                            <p class="new-price">₹1,425.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- Additional sample products (20) -->
+                <div class="box" data-name="ASUS TUF Gaming Laptop" data-category="electronics" data-price="67990">
+                    <p class="dis">9% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1640955014216-75201056c829?w=600&auto=format&fit=crop&q=60"
+                            alt="ASUS TUF Gaming Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h2>ASUS TUF Gaming Laptop</h2>
+                        <p class="product-desc">Durable gaming laptop with high-refresh display.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹70,000.00</p>
+                            <p class="new-price">₹67,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Canon DSLR Camera" data-category="electronics" data-price="30489">
+                    <p class="dis">11% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://plus.unsplash.com/premium_photo-1667538960183-82690c60a2a5?w=600&auto=format&fit=crop&q=60"
+                            alt="Canon DSLR Camera">
+                    </div>
+                    <div class="product-info">
+                        <h2>Canon DSLR Camera</h2>
+                        <p class="product-desc">High-resolution DSLR for stunning photos.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹35,450.00</p>
+                            <p class="new-price">₹30,489.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="JBL Bluetooth Speaker" data-category="electronics" data-price="1899">
+                    <p class="dis">17% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1632073383420-01461da1e082?w=600&auto=format&fit=crop&q=60"
+                            alt="JBL Bluetooth Speaker">
+                    </div>
+                    <div class="product-info">
+                        <h2>JBL Bluetooth Speaker</h2>
+                        <p class="product-desc">Portable speaker with rich bass.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,000.00</p>
+                            <p class="new-price">₹1,899.75</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Realme Narzo 70 Pro" data-category="electronics" data-price="18000">
+                    <p class="dis">21% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1695499405433-63b7d42e7326?w=600&auto=format&fit=crop&q=60"
+                            alt="Realme Narzo 70 Pro">
+                    </div>
+                    <div class="product-info">
+                        <h2>Realme Narzo 70 Pro</h2>
+                        <p class="product-desc">Feature-packed smartphone with fast charging.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.1</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹25,000.00</p>
+                            <p class="new-price">₹18,000.60</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Lenovo Tab M7" data-category="electronics" data-price="30000">
+                    <p class="dis">17% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container"><img
+                            src="https://images.unsplash.com/photo-1714071803623-9594e3b77862?w=600&auto=format&fit=crop&q=60"
+                            alt="Lenovo Tab M7"></div>
+                    <div class="product-info">
+                        <h2>Lenovo Tab M7</h2>
+                        <p class="product-desc">Compact tablet for media and browsing.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.0</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹33,000.00</p>
+                            <p class="new-price">₹30,000.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Zebronics Gaming Mouse" data-category="electronics" data-price="700">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container"><img
+                            src="https://images.unsplash.com/photo-1628832307345-7404b47f1751?w=600&auto=format&fit=crop&q=60"
+                            alt="Zebronics Gaming Mouse"></div>
+                    <div class="product-info">
+                        <h2>Zebronics Gaming Mouse</h2>
+                        <p class="product-desc">Ergonomic mouse with programmable buttons.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹800.00</p>
+                            <p class="new-price">₹700.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Zebronics Gaming Keyboard" data-category="electronics" data-price="950">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container"><img
+                            src="https://images.unsplash.com/photo-1626155399627-86488538895d?w=600&auto=format&fit=crop&q=60"
+                            alt="Keyboard"></div>
+                    <div class="product-info">
+                        <h2>Zebronics Gaming Keyboard</h2>
+                        <p class="product-desc">Mechanical keyboard with RGB lighting.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,250.00</p>
+                            <p class="new-price">₹950.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="MAC M2" data-category="electronics" data-price="72890">
+                    <p class="dis">5% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container"><img
+                            src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=60"
+                            alt="MAC M2"></div>
+                    <div class="product-info">
+                        <h2>MAC M2</h2>
+                        <p class="product-desc">Powerful laptop with M2 chip.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹77,920.00</p>
+                            <p class="new-price">₹72,890.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+
+                <!-- Product 3 -->
+                <div class="box" data-name="Philips Air Fryer" data-category="home" data-price="7499">
+                    <p class="dis">38% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/4e/ca/5b/4eca5bbf189cd3a371d896e57a82ecb6.jpg"
+                            alt="Philips Air Fryer">
+                    </div>
+                    <div class="product-info">
+                        <h2>Philips HD9252/90 Air Fryer</h2>
+                        <p class="product-desc">4.1L, 7 presets, RapidAir tech for healthy frying.</p>
+                        <div class="rating" aria-label="4.5 out of 5 stars">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹11,995.00</p>
+                            <p class="new-price">₹7,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Sony Headphones" data-category="electronics" data-price="7999">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/e9/05/c5/e905c536c865d8b9c93d184aef1e45ec.jpg"
+                            alt="Sony Headphones">
+                    </div>
+                    <div class="product-info">
+                        <h2>Sony Headphones</h2>
+                        <p class="product-desc">Noise-cancelling headphones with deep bass and premium comfort.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹9,999.00</p>
+                            <p class="new-price">₹7,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Apple iPad Air" data-category="electronics" data-price="54999">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/de/d7/f1/ded7f1c3c06fee935df1fb8ed2ece57e.jpg"
+                            alt="Apple iPad Air">
+                    </div>
+                    <div class="product-info">
+                        <h2>Apple iPad Air</h2>
+                        <p class="product-desc">Lightweight tablet with powerful M1 chip and vivid Retina display.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹61,000.00</p>
+                            <p class="new-price">₹54,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Dell Inspiron Laptop" data-category="electronics" data-price="62990">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/3a/db/86/3adb86a1155c19f8791af703f3103df3.jpg"
+                            alt="Dell Inspiron Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h2>Dell Inspiron Laptop</h2>
+                        <p class="product-desc">Sleek laptop with Intel i5, SSD storage, and long-lasting battery.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹74,000.00</p>
+                            <p class="new-price">₹62,990.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Samsung Smart TV" data-category="electronics" data-price="45999">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/33/d0/bd/33d0bd71171afacb16873354665fb07a.jpg"
+                            alt="Samsung Smart TV">
+                    </div>
+                    <div class="product-info">
+                        <h2>Samsung Smart TV</h2>
+                        <p class="product-desc">4K UHD display with built-in apps and voice assistant support.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹61,000.00</p>
+                            <p class="new-price">₹45,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- 👕 FASHION -->
+                <div class="box" data-name="Men’s Denim Jacket" data-category="fashion" data-price="2299">
+                    <p class="dis">30% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/ea/db/6b/eadb6b5380ee8e808dee997f5b1d2818.jpg"
+                            alt="Denim Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h2>Men’s Denim Jacket</h2>
+                        <p class="product-desc">Stylish blue denim jacket perfect for casual wear.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.2</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,299.00</p>
+                            <p class="new-price">₹2,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Women’s Summer Dress" data-category="fashion" data-price="1799">
+                    <p class="dis">40% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/e9/d2/3e/e9d23e3725c17988c1928d124411ac43.jpg"
+                            alt="Summer Dress">
+                    </div>
+                    <div class="product-info">
+                        <h2>Women’s Summer Dress</h2>
+                        <p class="product-desc">Floral cotton dress with breezy design and vibrant colors.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,999.00</p>
+                            <p class="new-price">₹1,799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Sneakers" data-category="fashion" data-price="2599">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/80/33/a4/8033a49a1af88a4e4b3e22abd2795173.jpg"
+                            alt="Sneakers">
+                    </div>
+                    <div class="product-info">
+                        <h2>White Sneakers</h2>
+                        <p class="product-desc">Trendy and comfortable sneakers for daily casual looks.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,299.00</p>
+                            <p class="new-price">₹2,599.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Fossil Watch" data-category="fashion" data-price="8999">
+                    <p class="dis">25% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/c7/6a/b9/c76ab913f6f747b8858e7470b1190bfe.jpg"
+                            alt="Fossil Watch">
+                    </div>
+                    <div class="product-info">
+                        <h2>Fossil Watch</h2>
+                        <p class="product-desc">Elegant analog watch with leather strap and premium finish.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹11,999.00</p>
+                            <p class="new-price">₹8,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Luxe Lipstick" data-category="beauty" data-price="999">
+                    <p class="dis">25% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/4e/49/d2/4e49d2c81c35d28395886821ca09bd40.jpg"
+                            alt="Lipstick">
+                    </div>
+                    <div class="product-info">
+                        <h2>Luxe Lipstick</h2>
+                        <p class="product-desc">Long-lasting matte lipstick with a silky smooth finish.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,299.00</p>
+                            <p class="new-price">₹999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Glow Face Serum" data-category="beauty" data-price="1299">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/50/9c/f3/509cf323530191639c58988bc860002a.jpg"
+                            alt="Face Serum">
+                    </div>
+                    <div class="product-info">
+                        <h2>Glow Face Serum</h2>
+                        <p class="product-desc">Vitamin C serum for glowing and hydrated skin.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,599.00</p>
+                            <p class="new-price">₹1,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Hair Spa Cream" data-category="beauty" data-price="699">
+                    <p class="dis">30% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/c4/87/9b/c4879b5b094012c82f4298faa719e52e.jpg"
+                            alt="Hair Spa Cream">
+                    </div>
+                    <div class="product-info">
+                        <h2>Hair Spa Cream</h2>
+                        <p class="product-desc">Nourishing cream for silky, frizz-free and smooth hair.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹999.00</p>
+                            <p class="new-price">₹699.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Aetheris Perfume" data-category="beauty" data-price="2199">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/16/b0/33/16b033d34fad37515db999fad205e866.jpg"
+                            alt="Perfume">
+                    </div>
+                    <div class="product-info">
+                        <h2>Aetheris Perfume</h2>
+                        <p class="product-desc">Luxury fragrance with floral and woody undertones.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,799.00</p>
+                            <p class="new-price">₹2,199.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- 🛋️ FURNITURE -->
+                <div class="box" data-name="Modern Sofa" data-category="furniture" data-price="18999">
+                    <p class="dis">25% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/9a/08/7f/9a087f522e5f0e09d597784e5d0c9508.jpg"
+                            alt="Modern Sofa">
+                    </div>
+                    <div class="product-info">
+                        <h2>Modern Sofa</h2>
+                        <p class="product-desc">3-seater modern fabric sofa for elegant living spaces.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹24,999.00</p>
+                            <p class="new-price">₹18,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Wooden Study Table" data-category="furniture" data-price="4999">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/9f/c3/64/9fc364e2b45936c3547ede0fccc7c661.jpg"
+                            alt="Study Table">
+                    </div>
+                    <div class="product-info">
+                        <h2>Wooden Study Table</h2>
+                        <p class="product-desc">Compact wooden desk with drawers for modern homes.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹6,299.00</p>
+                            <p class="new-price">₹4,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Office Chair" data-category="furniture" data-price="7499">
+                    <p class="dis">15% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/f6/53/f3/f653f341a658f08951a954f750b35fab.jpg"
+                            alt="Office Chair">
+                    </div>
+                    <div class="product-info">
+                        <h2>Ergonomic Office Chair</h2>
+                        <p class="product-desc">Adjustable office chair with back support and cushion comfort.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹8,899.00</p>
+                            <p class="new-price">₹7,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Bedside Lamp" data-category="furniture" data-price="1299">
+                    <p class="dis">30% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/57/6c/aa/576caa3e2c6ceb4a3e8f2298c308d60a.jpg"
+                            alt="Bedside Lamp">
+                    </div>
+                    <div class="product-info">
+                        <h2>Bedside Lamp</h2>
+                        <p class="product-desc">Warm LED lamp with wooden base and soft light glow.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.9</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,899.00</p>
+                            <p class="new-price">₹1,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- 📚 BOOKS -->
+                <div class="box" data-name="Atomic Habits" data-category="books" data-price="449">
+                    <p class="dis">15% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/39/d9/d6/39d9d620d911c59cddd87302a2810bc3.jpg"
+                            alt="Atomic Habits">
+                    </div>
+                    <div class="product-info">
+                        <h2>Atomic Habits</h2>
+                        <p class="product-desc">A powerful guide to building good habits and breaking bad ones.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.9</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹529.00</p>
+                            <p class="new-price">₹449.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="The Alchemist" data-category="books" data-price="299">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/05/0d/8c/050d8c9d7be040c067bd8e54f6f60cea.jpg"
+                            alt="The Alchemist">
+                    </div>
+                    <div class="product-info">
+                        <h2>The Alchemist</h2>
+                        <p class="product-desc">A timeless novel about following your dreams by Paulo Coelho.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹375.00</p>
+                            <p class="new-price">₹299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Deep Work" data-category="books" data-price="449">
+                    <p class="dis">25% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/b3/c7/a6/b3c7a60e11b25e3d908924832ff23509.jpg"
+                            alt="Deep Work">
+                    </div>
+                    <div class="product-info">
+                        <h2>Deep Work</h2>
+                        <p class="product-desc">Cal Newport’s guide to mastering focus in a distracted world.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹599.00</p>
+                            <p class="new-price">₹449.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Think Like a Monk" data-category="books" data-price="399">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/3b/e0/b0/3be0b092a93a6d55cb928fe4f082c881.jpg"
+                            alt="Think Like a Monk">
+                    </div>
+                    <div class="product-info">
+                        <h2>Think Like a Monk</h2>
+                        <p class="product-desc">Jay Shetty’s lessons on peace and purpose in daily life.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹499.00</p>
+                            <p class="new-price">₹399.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- ⚽ SPORTS -->
+                <div class="box" data-name="Football" data-category="sports" data-price="799">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/27/4d/bb/274dbb8670cf70a8d38906261b887309.jpg"
+                            alt="Football">
+                    </div>
+                    <div class="product-info">
+                        <h2>Professional Football</h2>
+                        <p class="product-desc">Durable stitched football for professional and casual play.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹999.00</p>
+                            <p class="new-price">₹799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Yoga Mat" data-category="sports" data-price="899">
+                    <p class="dis">30% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/37/e7/bd/37e7bdf4f5fb9e6c7f20d82d618f25f2.jpg"
+                            alt="Yoga Mat">
+                    </div>
+                    <div class="product-info">
+                        <h2>Yoga Mat</h2>
+                        <p class="product-desc">Non-slip eco-friendly mat for yoga and fitness workouts.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,299.00</p>
+                            <p class="new-price">₹899.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Cricket Bat" data-category="sports" data-price="1499">
+                    <p class="dis">25% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/6d/15/66/6d15669c43260178dcadacb39d106318.jpg"
+                            alt="Cricket Bat">
+                    </div>
+                    <div class="product-info">
+                        <h2>Cricket Bat</h2>
+                        <p class="product-desc">Professional willow bat for powerful strokes and control.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,999.00</p>
+                            <p class="new-price">₹1,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Skipping Rope" data-category="sports" data-price="399">
+                    <p class="dis">20% OFF</p><button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/35/7a/63/357a63406115126397b6f552c4310147.jpg"
+                            alt="Skipping Rope">
+                    </div>
+                    <div class="product-info">
+                        <h2>Skipping Rope</h2>
+                        <p class="product-desc">Adjustable length jump rope with comfortable grip handles.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹499.00</p>
+                            <p class="new-price">₹399.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <!-- Toys Category -->
+                <div class="box" data-name="Lego City Set" data-category="toys" data-price="3499">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/9a/77/88/9a77883b4fb47ac2876bf35559773ff3.jpg"
+                            alt="Lego City Set">
+                    </div>
+                    <div class="product-info">
+                        <h2>Lego City Set</h2>
+                        <p class="product-desc">Creative Lego blocks for building city structures.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,899.00</p>
+                            <p class="new-price">₹3,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Remote Control Car" data-category="toys" data-price="2599">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/c1/cf/64/c1cf641b1e3816aa7fdb3fc941e8f3ab.jpg"
+                            alt="Remote Control Car">
+                    </div>
+                    <div class="product-info">
+                        <h2>Remote Control Car</h2>
+                        <p class="product-desc">High-speed RC car with rechargeable battery.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,060.00</p>
+                            <p class="new-price">₹2,599.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Barbie Dream Doll" data-category="toys" data-price="1999">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/24/2b/79/242b79dd3cbf84475b186a7627f6f46e.jpg"
+                            alt="Barbie Dream Doll">
+                    </div>
+                    <div class="product-info">
+                        <h2>Barbie Dream Doll</h2>
+                        <p class="product-desc">Stylish Barbie doll with accessories set.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,499.00</p>
+                            <p class="new-price">₹1,999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Stuffed Teddy Bear" data-category="toys" data-price="799">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/d9/33/8c/d9338c736633755f3bb4ca34aaeedc00.jpg"
+                            alt="Stuffed Teddy Bear">
+                    </div>
+                    <div class="product-info">
+                        <h2>Stuffed Teddy Bear</h2>
+                        <p class="product-desc">Soft and cuddly teddy bear for kids of all ages.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,099.00</p>
+                            <p class="new-price">₹799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Puzzle Board Game" data-category="toys" data-price="1299">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/8a/4f/4d/8a4f4d1b3fbadd13c173c0bc04c16b44.jpg"
+                            alt="Puzzle Board Game">
+                    </div>
+                    <div class="product-info">
+                        <h2>Puzzle Board Game</h2>
+                        <p class="product-desc">Brain-stimulating jigsaw puzzle game set.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,530.00</p>
+                            <p class="new-price">₹1,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Rubik’s Cube 3x3" data-category="toys" data-price="499">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/61/93/53/61935317e8f12eebfdcb1d8514535961.jpg"
+                            alt="Rubik’s Cube">
+                    </div>
+                    <div class="product-info">
+                        <h2>Rubik’s Cube 3x3</h2>
+                        <p class="product-desc">Classic 3x3 cube puzzle for quick thinkers.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹550.00</p>
+                            <p class="new-price">₹499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Kids Basketball Set" data-category="toys" data-price="1899">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/ae/8b/9c/ae8b9c6eafbe94e012b7d7e1a341dab0.jpg"
+                            alt="Kids Basketball Set">
+                    </div>
+                    <div class="product-info">
+                        <h2>Kids Basketball Set</h2>
+                        <p class="product-desc">Mini basketball hoop and ball set for kids.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,399.00</p>
+                            <p class="new-price">₹1,899.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="#">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Modern Table Lamp" data-category="home" data-price="2899">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/eb/24/44/eb2444706af5260834ef2eec69e72eef.jpg"
+                            alt="Modern Table Lamp">
+                    </div>
+                    <div class="product-info">
+                        <h2>Modern Table Lamp</h2>
+                        <p class="product-desc">Sleek bedside lamp with warm LED lighting.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,599.00</p>
+                            <p class="new-price">₹2,899.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="box" data-name="Organic Brown Rice" data-category="groceries" data-price="799">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/18/3a/d0/183ad01b61848302470d957cdf0a34cd.jpg"
+                            alt="Organic Brown Rice">
+                    </div>
+                    <div class="product-info">
+                        <h2>Organic Brown Rice</h2>
+                        <p class="product-desc">Healthy and unpolished long-grain brown rice.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.3</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹940.00</p>
+                            <p class="new-price">₹799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Pure Honey 500g" data-category="groceries" data-price="349">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/93/91/30/939130e6f9d105d35853ddeb7c6440f3.jpg"
+                            alt="Pure Honey">
+                    </div>
+                    <div class="product-info">
+                        <h2>Pure Honey 500g</h2>
+                        <p class="product-desc">Natural, unprocessed honey rich in nutrients.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹389.00</p>
+                            <p class="new-price">₹349.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Olive Oil 1L" data-category="groceries" data-price="699">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/65/0b/55/650b550045048b6218da8bd38b03b9b5.jpg"
+                            alt="Olive Oil 1L">
+                    </div>
+                    <div class="product-info">
+                        <h2>Olive Oil 1L</h2>
+                        <p class="product-desc">Extra virgin olive oil perfect for healthy cooking.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹875.00</p>
+                            <p class="new-price">₹699.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="box" data-name="Car Vacuum Cleaner" data-category="automotive" data-price="1799">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/d1/69/bf/d169bfa97d097829074cf310ccc493fc.jpg"
+                            alt="Car Vacuum Cleaner">
+                    </div>
+                    <div class="product-info">
+                        <h2>Car Vacuum Cleaner</h2>
+                        <p class="product-desc">Portable vacuum cleaner for car interiors.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,399.00</p>
+                            <p class="new-price">₹1,799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Motorbike Helmet" data-category="automotive" data-price="2499">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/06/1c/3c/061c3cb4b84e16e08bef2c34b45c5007.jpg"
+                            alt="Motorbike Helmet">
+                    </div>
+                    <div class="product-info">
+                        <h2>Motorbike Helmet</h2>
+                        <p class="product-desc">Stylish and sturdy helmet for safe riding.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,950.00</p>
+                            <p class="new-price">₹2,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Car Perfume Diffuser" data-category="automotive" data-price="999">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/cf/a1/62/cfa1621602fcb8613a1d8bf093230a93.jpg"
+                            alt="Car Perfume Diffuser">
+                    </div>
+                    <div class="product-info">
+                        <h2>Car Perfume Diffuser</h2>
+                        <p class="product-desc">Long-lasting air freshener for your car.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,249.00</p>
+                            <p class="new-price">₹999.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="box" data-name="Vitamin C Tablets" data-category="health" data-price="499">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/5f/73/3c/5f733c6f7062b849a23845948cd54cd5.jpg"
+                            alt="Vitamin C Tablets">
+                    </div>
+                    <div class="product-info">
+                        <h2>Vitamin C Tablets</h2>
+                        <p class="product-desc">Immunity-boosting chewable tablets.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹589.00</p>
+                            <p class="new-price">₹499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Digital Thermometer" data-category="health" data-price="799">
+                    <p class="dis">10% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/93/85/01/93850154e720bda830f86ae6600c63e3.jpg"
+                            alt="Digital Thermometer">
+                    </div>
+                    <div class="product-info">
+                        <h2>Digital Thermometer</h2>
+                        <p class="product-desc">Fast and accurate digital temperature reader.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹890.00</p>
+                            <p class="new-price">₹799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Yoga Mat" data-category="health" data-price="1299">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/1c/a4/24/1ca4248fecc68808306816f4471d68f8.jpg"
+                            alt="Yoga Mat">
+                    </div>
+                    <div class="product-info">
+                        <h2>Yoga Mat</h2>
+                        <p class="product-desc">Non-slip, eco-friendly mat for daily workouts.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,649.00</p>
+                            <p class="new-price">₹1,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="box" data-name="Dog Food 5kg" data-category="pet supplies" data-price="1899">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/10/76/79/10767958be175ad6e9983aa63600c0a7.jpg"
+                            alt="Dog Food 5kg">
+                    </div>
+                    <div class="product-info">
+                        <h2>Dog Food 5kg</h2>
+                        <p class="product-desc">Nutritious dry food for adult dogs.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,230.00</p>
+                            <p class="new-price">₹1,899.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Cat Scratching Post" data-category="pet supplies" data-price="1599">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/b2/4c/6f/b24c6f692126fb165550fa59bae71058.jpg"
+                            alt="Cat Scratching Post">
+                    </div>
+                    <div class="product-info">
+                        <h2>Cat Scratching Post</h2>
+                        <p class="product-desc">Durable scratch pole for cats to play and rest.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.4</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹1,999.00</p>
+                            <p class="new-price">₹1,599.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Pet Water Fountain" data-category="pet supplies" data-price="2299">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/13/d5/c6/13d5c615bf1bd6768394b1c374bb96e6.jpg"
+                            alt="Pet Water Fountain">
+                    </div>
+                    <div class="product-info">
+                        <h2>Pet Water Fountain</h2>
+                        <p class="product-desc">Automatic water dispenser with filter.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.7</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,699.00</p>
+                            <p class="new-price">₹2,299.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+                <div class="box" data-name="Silver Pendant Necklace" data-category="jewellery" data-price="2499">
+                    <p class="dis">25% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/4a/1b/2e/4a1b2e9b4ee73ab6d0e3179bdcdc4538.jpg"
+                            alt="Silver Pendant Necklace">
+                    </div>
+                    <div class="product-info">
+                        <h2>Silver Pendant Necklace</h2>
+                        <p class="product-desc">Elegant sterling silver pendant with chain.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.8</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹3,299.00</p>
+                            <p class="new-price">₹2,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Gold Plated Earrings" data-category="jewellery" data-price="1799">
+                    <p class="dis">20% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/1200x/cf/f2/0d/cff20d912efebbff22556299d7c70c6b.jpg"
+                            alt="Gold Plated Earrings">
+                    </div>
+                    <div class="product-info">
+                        <h2>Gold Plated Earrings</h2>
+                        <p class="product-desc">Trendy gold plated studs with stone detail.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★☆</div>
+                            <div class="rating-value">4.6</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹2,249.00</p>
+                            <p class="new-price">₹1,799.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+                <div class="box" data-name="Diamond Ring" data-category="jewellery" data-price="7499">
+                    <p class="dis">15% OFF</p>
+                    <button class="fav">♥</button>
+                    <div class="image-container">
+                        <img src="https://i.pinimg.com/736x/37/6f/35/376f35f584bb5a7f7af42fc5a9b999b1.jpg"
+                            alt="Diamond Ring">
+                    </div>
+                    <div class="product-info">
+                        <h2>Diamond Ring</h2>
+                        <p class="product-desc">Classic solitaire diamond ring for elegance.</p>
+                        <div class="rating">
+                            <div class="stars">★★★★★</div>
+                            <div class="rating-value">4.9</div>
+                        </div>
+                        <div class="price">
+                            <p class="old-price">₹8,999.00</p>
+                            <p class="new-price">₹7,499.00</p>
+                        </div>
+                        <a class="Add-To-Cart" href="signin-singup.html">Add To Cart</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Filter script for this page -->
+            <script>
+                (function () {
+                    const search = document.getElementById('searchAll');
+                    const category = document.getElementById('categoryFilter');
+                    const minPrice = document.getElementById('minPrice');
+                    const maxPrice = document.getElementById('maxPrice');
+                    const clearBtn = document.getElementById('clearFilters');
+                    const grid = document.getElementById('all-products-grid');
+
+                    function parsePrice(v) {
+                        const n = Number(v);
+                        return isNaN(n) ? 0 : n;
+                    }
+
+                    function filterProducts() {
+                        const q = (search && search.value || '').trim().toLowerCase();
+                        const cat = category ? category.value : 'all';
+                        const min = minPrice ? parsePrice(minPrice.value) : 0;
+                        const max = maxPrice && maxPrice.value ? parseFloat(maxPrice.value) : Infinity;
+                        const products = Array.from(grid ? grid.querySelectorAll('.box') : document.querySelectorAll('.box'));
+
+                        products.forEach(p => {
+                            const name = (p.dataset.name || '').toLowerCase();
+                            const catp = (p.dataset.category || '').toLowerCase();
+                            const price = parseFloat(p.dataset.price) || 0;
+
+                            const okSearch = !q || name.indexOf(q) !== -1;
+                            const okCat = (cat === 'all') || (catp === (cat || '').toLowerCase());
+                            const okPrice = price >= min && price <= max;
+
+                            p.style.display = (okSearch && okCat && okPrice) ? '' : 'none';
+                        });
+                    }
+
+                    if (search) search.addEventListener('input', filterProducts);
+                    if (category) category.addEventListener('change', filterProducts);
+                    if (minPrice) minPrice.addEventListener('input', filterProducts);
+                    if (maxPrice) maxPrice.addEventListener('input', filterProducts);
+                    if (clearBtn) clearBtn.addEventListener('click', function () {
+                        if (search) search.value = '';
+                        if (category) category.value = 'all';
+                        if (minPrice) minPrice.value = '';
+                        if (maxPrice) maxPrice.value = '';
+                        filterProducts();
+                    });
+
+                    // Run once on load to ensure initial filtering state
+                    document.addEventListener('DOMContentLoaded', filterProducts);
+                    // Expose for external scripts (keeps compatibility with previously exposed applyFilters)
+                    window.applyFilters = filterProducts;
+                })();
+            </script>
+        </div>
+    </section>
+
+    <!-- About Us (inserted) -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>We make e-commerce simple, fast and trusted</h3>
+                    <p>At Fyashion we bring together a thoughtful selection of products, fast delivery,
+                        and customer-first support. Our platform connects millions of shoppers with
+                        verified sellers and uses smart recommendations to surface the best choices for
+                        every need.</p>
+
+                    <div class="about-cards" role="list">
+                        <div class="about-card" role="listitem">
+                            <div class="icon"><i class="fa-solid fa-user-group"></i></div>
+                            <div>
+                                <strong>Customers</strong>
+                                <div class="muted">Personalized profiles & loyalty perks</div>
+                            </div>
+                        </div>
+
+                        <div class="about-card" role="listitem">
+                            <div class="icon"><i class="fa-solid fa-comments"></i></div>
+                            <div>
+                                <strong>Ratings</strong>
+                                <div class="muted">Real reviews from verified buyers</div>
+                            </div>
+                        </div>
+
+                        <div class="about-card" role="listitem">
+                            <div class="icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                            <div>
+                                <strong>Orders</strong>
+                                <div class="muted">Secure checkout & easy returns</div>
+                            </div>
+                        </div>
+
+                        <div class="about-card" role="listitem">
+                            <div class="icon"><i class="fa-solid fa-chart-column"></i></div>
+                            <div>
+                                <strong>Analytics</strong>
+                                <div class="muted">Insights that help sellers and shoppers</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="about-stats" aria-hidden="false">
+                        <div class="stat">
+                            <div class="num">4.6</div>
+                            <div class="label">Average Rating</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">98%</div>
+                            <div class="label">On-time Delivery</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">250K+</div>
+                            <div class="label">Products Sold</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">120+</div>
+                            <div class="label">Trusted Brands</div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                </script>
+
+                <aside class="about-image">
+                    <img src="https://i.pinimg.com/736x/a1/42/b5/a142b5b7a06b7bfa74fe43794cebe12c.jpg"
+                        alt="Team working on e-commerce" class="about-img">
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Fyashion is a premium online marketplace offering curated, high-quality products with exceptional
+                    service and a seamless shopping experience.</p>
+                <div class="footer-socials" aria-label="Social links">
+                    <a href="https://www.facebook.com/share/15ZUGuWBXY/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://twitter.com/yash_roy91" target="_blank" rel="noopener noreferrer"
+                        aria-label="Twitter">
+                        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="http://instagram.com/yashroy9938" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/917989552340" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="/services/contact-us.html">Contact Us</a>
+                <a href="/services/faq.html">FAQs</a>
+                <a href="/services/shipping.html">Shipping Policy</a>
+                <a href="/services/returns.html">Returns & Refunds</a>
+                <a href="/services/size-guide.html">Size Guide</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Developer</h3>
+                <a href="https://mmvyash.netlify.app/" target="_blank">Developer Website</a>
+                <a href="mailto:mmvyash.143@gmail.com" target="_blank">Developer E-mail Address</a>
+                <a href="https://www.linkedin.com/in/yash-370744188/" target="_blank">Developer Linkedin Profile</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers</p>
+                <input type="email" id="footer-mail" placeholder="Your email address" required
+                    class="footer-input-border">
+                <button type="submit">Subscribe</button>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Fyashion <b>|</b> All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const searchFilter = document.getElementById('search-filter');
+        const allProductsGrid = document.getElementById('all-products-grid');
+        const bannerSlider = document.getElementById('bannerSlider');
+
+        // Theme removed: UI and toggle logic were removed per request.
+
+        // Mobile Menu Management
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on nav links
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+        }
+
+        // Favorite Toggle
+        function toggleFavorite(btn) {
+            btn.classList.toggle('active');
+            btn.textContent = btn.classList.contains('active') ? '❤︎' : '♥';
+        }
+
+        // Banner Slider
+        function initBannerSlider() {
+            if (!bannerSlider) return;
+
+            let currentSlide = 0;
+            const slides = bannerSlider.querySelectorAll('.slider-item');
+            const totalSlides = slides.length;
+
+            function autoSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                bannerSlider.scrollTo({
+                    left: slides[currentSlide].offsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Auto slide every 3 seconds
+            setInterval(autoSlide, 3000);
+        }
+
+        // Cart Management
+        function addToCart(id, name, image, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    image,
+                    price: price.replace(/[₹$,]/g, ''),
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Show confirmation
+            alert(`${name} has been added to your cart!`);
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme removed: initialization and event listeners omitted.
+
+            // Mobile menu events
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (mobileNav && mobileNav.classList.contains('active') &&
+                    !mobileNav.contains(e.target) &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Initialize banner slider
+            initBannerSlider();
+
+            // Favorite buttons
+            const favButtons = document.querySelectorAll('.fav');
+            favButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    toggleFavorite(btn);
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                        // Close mobile menu if open
+                        closeMobileMenu();
+                    }
+                });
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            // Close mobile menu on resize to desktop
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+    <script>
+        (function () {
+            // Utilities for storage
+            const CART_KEY = 'cart';
+            const WISH_KEY = 'wishlist';
+
+            function readJSON(key) {
+                try {
+                    return JSON.parse(localStorage.getItem(key)) || [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function writeJSON(key, val) {
+                localStorage.setItem(key, JSON.stringify(val));
+            }
+
+            // Sidebar elements
+            const cartSidebar = document.getElementById('cartSidebar');
+            const wishSidebar = document.getElementById('wishSidebar');
+            const cartItems = document.getElementById('cartItems');
+            const wishItems = document.getElementById('wishItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const wishCount = document.getElementById('wishCount');
+
+            function openPanel(panel) {
+                panel.classList.add('open');
+                panel.setAttribute('aria-hidden', 'false');
+            }
+
+            function closePanel(panel) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+            }
+
+            document.getElementById('closeCart').addEventListener('click', () => closePanel(cartSidebar));
+            document.getElementById('closeWish').addEventListener('click', () => closePanel(wishSidebar));
+
+            // Renderers
+            function renderCart() {
+                const items = readJSON(CART_KEY);
+                cartItems.innerHTML = '';
+                let total = 0;
+                items.forEach(it => {
+                    total += Number(it.price || 0) * (it.quantity || 1);
+                    const el = document.createElement('div');
+                    el.className = 'sidebar-item';
+                    el.innerHTML = `
+                        <img src="${it.image || ''}" alt="${escapeHtml(it.name || '')}">
+                        <div class="meta">
+                            <div class="title">${escapeHtml(it.name)}</div>
+                            <div style="display:flex;gap:8px;align-items:center;">
+                                <div class="price">₹${Number(it.price).toLocaleString()}</div>
+                                <div style="margin-left:auto;display:flex;gap:6px;align-items:center;">
+                                    <button class="small-btn decrease" data-id="${it.id}">-</button>
+                                    <div>${it.quantity}</div>
+                                    <button class="small-btn increase" data-id="${it.id}">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cartItems.appendChild(el);
+                });
+                cartTotal.textContent = `₹${Number(total).toLocaleString()}`;
+            }
+
+            function renderWish() {
+                const items = readJSON(WISH_KEY);
+                wishItems.innerHTML = '';
+                items.forEach(it => {
+                    const el = document.createElement('div');
+                    el.className = 'sidebar-item';
+                    el.innerHTML = `
+                        <img src="${it.image || ''}" alt="${escapeHtml(it.name || '')}">
+                        <div class="meta">
+                            <div class="title">${escapeHtml(it.name)}</div>
+                            <div style="display:flex;gap:8px;align-items:center;">
+                                <div class="price">₹${Number(it.price).toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="small-btn move-to-cart" data-id="${it.id}">Add</button>
+                        </div>
+                    `;
+                    wishItems.appendChild(el);
+                });
+                wishCount.textContent = items.length;
+            }
+
+            function escapeHtml(s) {
+                return String(s).replace(/[&<>"']/g, function (m) {
+                    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+                });
+            }
+
+            // Delegated click handlers for add-to-cart and wishlist toggle
+            document.body.addEventListener('click', function (e) {
+                const atc = e.target.closest('.Add-To-Cart');
+                if (atc) {
+                    e.preventDefault();
+                    // find the parent .box
+                    const box = atc.closest('.box');
+                    if (!box) return;
+                    const id = box.dataset.name + '|' + (box.dataset.price || '0');
+                    const name = box.dataset.name || box.querySelector('h2')?.textContent || 'Product';
+                    const image = box.querySelector('img')?.src || '';
+                    const price = (box.dataset.price || '').toString();
+
+                    // add to cart storage
+                    let cart = readJSON(CART_KEY);
+                    const existing = cart.find(i => i.id === id);
+                    if (existing) existing.quantity = (existing.quantity || 0) + 1;
+                    else cart.push({ id, name, image, price, quantity: 1 });
+                    writeJSON(CART_KEY, cart);
+                    renderCart();
+                    openPanel(cartSidebar);
+                    return;
+                }
+
+                const favBtn = e.target.closest('.fav');
+                if (favBtn) {
+                    e.preventDefault();
+                    const box = favBtn.closest('.box');
+                    if (!box) return;
+                    const id = box.dataset.name + '|' + (box.dataset.price || '0');
+                    const name = box.dataset.name || box.querySelector('h2')?.textContent || 'Product';
+                    const image = box.querySelector('img')?.src || '';
+                    const price = (box.dataset.price || '').toString();
+
+                    let wish = readJSON(WISH_KEY);
+                    const exists = wish.find(i => i.id === id);
+                    if (exists) {
+                        wish = wish.filter(i => i.id !== id);
+                        favBtn.classList.remove('active');
+                    } else {
+                        wish.push({ id, name, image, price });
+                        favBtn.classList.add('active');
+                    }
+                    writeJSON(WISH_KEY, wish);
+                    renderWish();
+                    openPanel(wishSidebar);
+                    return;
+                }
+
+                const inc = e.target.closest('.increase');
+                if (inc) {
+                    const id = inc.dataset.id;
+                    const cart = readJSON(CART_KEY);
+                    const it = cart.find(i => i.id === id);
+                    if (it) { it.quantity = (it.quantity || 0) + 1; writeJSON(CART_KEY, cart); renderCart(); }
+                    return;
+                }
+
+                const dec = e.target.closest('.decrease');
+                if (dec) {
+                    const id = dec.dataset.id;
+                    let cart = readJSON(CART_KEY);
+                    const it = cart.find(i => i.id === id);
+                    if (it) {
+                        it.quantity = (it.quantity || 1) - 1;
+                        if (it.quantity <= 0) {
+                            cart = cart.filter(x => x.id !== id);
+                        }
+                        writeJSON(CART_KEY, cart);
+                        renderCart();
+                    }
+                    return;
+                }
+
+                const moveToCart = e.target.closest('.move-to-cart');
+                if (moveToCart) {
+                    const id = moveToCart.dataset.id;
+                    let wish = readJSON(WISH_KEY);
+                    const item = wish.find(i => i.id === id);
+                    if (!item) return;
+                    // remove from wish
+                    wish = wish.filter(i => i.id !== id);
+                    writeJSON(WISH_KEY, wish);
+
+                    // add to cart
+                    let cart = readJSON(CART_KEY);
+                    const existing = cart.find(i => i.id === id);
+                    if (existing) existing.quantity = (existing.quantity || 0) + 1;
+                    else cart.push({ ...item, quantity: 1 });
+                    writeJSON(CART_KEY, cart);
+
+                    renderWish();
+                    renderCart();
+                    openPanel(cartSidebar);
+                    return;
+                }
+            });
+
+            // Quick open buttons in header (add badges)
+            (function addHeaderButtons() {
+                const desktopActions = document.querySelector('.desktop-actions');
+                if (!desktopActions) return;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'sidebar-toggle-btns';
+                wrapper.innerHTML = `
+                    <div class="desktop-btn" id="header-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span style="margin-left:6px">Cart</span>
+                        <span class="badge-count" id="headerCartCount">0</span>
+                    </div>
+                    <div class="desktop-btn" id="header-account">
+                        <i class="fa-solid fa-user"></i>
+                        <span style="margin-left:6px">Account</span>
+                    </div>
+                `;
+                desktopActions.insertBefore(wrapper, desktopActions.firstChild);
+                document.getElementById('header-cart').addEventListener('click', () => { renderCart(); openPanel(cartSidebar); });
+                document.getElementById('header-account').addEventListener('click', () => { /* open account/login */ window.location.href = 'signin-singup.html'; });
+            })();
+
+            // Keep header counts in sync
+            function refreshHeaderCounts() {
+                const cart = readJSON(CART_KEY);
+                const hc = document.getElementById('headerCartCount');
+                if (hc) hc.textContent = cart.reduce((s, i) => s + (i.quantity || 0), 0);
+            }
+
+            // initial render
+            renderCart();
+            renderWish();
+            refreshHeaderCounts();
+
+            // keep counts updated when storage changes (other tabs)
+            window.addEventListener('storage', function () { renderCart(); renderWish(); refreshHeaderCounts(); });
+
+            // Update counts upon cart/wish changes by watching writes
+            const originalSetItem = Storage.prototype.setItem;
+            Storage.prototype.setItem = function (k, v) {
+                originalSetItem.apply(this, [k, v]);
+                if (k === CART_KEY || k === WISH_KEY) {
+                    renderCart(); renderWish(); refreshHeaderCounts();
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>
